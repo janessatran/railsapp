@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    render html: 'homepage placeholder :)'
+  end
+
+  def search
   end
 end
