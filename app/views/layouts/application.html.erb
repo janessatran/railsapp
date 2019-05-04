@@ -1,15 +1,44 @@
+<% provide(:title, "Home") %>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Railsapp</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
   </head>
-
   <body>
-    <%= yield %>
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="./" class="navbar-brand">Cheatsheets</a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Login</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
+
