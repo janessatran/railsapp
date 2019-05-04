@@ -1,8 +1,19 @@
 <h1>This is the homepage for our app!</h1>
 
-  <p>
-  Here we can talk about the purpose of this website.
-  I would like the purpose to be to help people achieve their goals
-  by helping them plan out those goals, recording what they are doing,
-  and recording what they are learning.
-  </p>
+<p>
+Here we can talk about the purpose of this website.
+I would like the purpose to be to help people achieve their goals
+by helping them plan out those goals, recording what they are doing,
+and recording what they are learning.
+</p>
+<body>
+<%= form_tag(search_page_path, :method => "get",   
+    class: 'search-container') do %>  
+  <div id="search-bar">  
+    <%= search_field_tag :search, params[:search], placeholder: "What topic do you need help with today?", class: "search-bar" %>  
+    <div class="input-group-btn">  
+      <%= button_tag "", :class => 'search-icon',:name => nil %>
+    </div>  
+  </div>  
+<% end %>
+</body>
