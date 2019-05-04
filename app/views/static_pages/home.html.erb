@@ -10,7 +10,7 @@ and recording what they are learning.
 <%= form_tag(search_page_path, :method => "get",   
     class: 'search-container') do %>  
   <div id="search-bar">  
-    <%= search_field_tag :search, params[:search], placeholder: "What topic do you need help with today?", class: "search-bar" %>  
+    <%= search_field_tag :search, params[:search], placeholder: "Search topics", class: "search-bar" %>  
     <div class="input-group-btn">  
       <%= button_tag "", :class => 'search-icon',:name => nil %>
     </div>  
