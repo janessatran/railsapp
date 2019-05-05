@@ -19,6 +19,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'bcrypt'
+gem 'rails-controller-testing'
 
 
 # Use CoffeeScript for .coffee assets and views
