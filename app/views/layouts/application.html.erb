@@ -1,4 +1,3 @@
-<% provide(:title, "Home") %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,32 +12,11 @@
     <![endif]-->
   </head>
   <body>
-<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="./" class="navbar-brand">Cheatsheets</a>
-    </div>
-    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="#">About</a>
-        </li>
-        <li>
-          <a href="#">Log In</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
+    <%= render 'layouts/navbar' %>
     <div class="container">
       <%= yield %>
     </div>
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
 

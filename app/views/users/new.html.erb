@@ -1,2 +1,27 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<% provide(:title, 'Sign up') %>
+<center><h1>Create New Account</h1></center>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 form-input">
+    <%= form_for(@user) do |f| %>
+      <%= f.label :name %>
+      <br>
+      <%= f.text_field :name %>
+
+      <%= f.label :email %> 
+      <br>
+      <%= f.email_field :email %>
+
+      <%= f.label :password %> 
+      <br>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %> 
+      <br>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %> 
+      <br><br>
+    <% end %>
+  </div>
+</div>
