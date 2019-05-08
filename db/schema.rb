@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_05_150509) do
+ActiveRecord::Schema.define(version: 2019_05_08_011342) do
+
+  create_table "cheatsheets", force: :cascade do |t|
+    t.string "title"
+    t.string "topic"
+    t.text "content"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cheatsheets_on_user_id"
+  end
 
   create_table "topics", force: :cascade do |t|
     t.string "name"
