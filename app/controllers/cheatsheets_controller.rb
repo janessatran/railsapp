@@ -1,7 +1,7 @@
 class CheatsheetsController < ApplicationController
-  # def new
-  #   @cheatsheet = Cheatsheet.new
-  # end
+  def new
+    @cheatsheet = Cheatsheet.new
+  end
 
   private
 
