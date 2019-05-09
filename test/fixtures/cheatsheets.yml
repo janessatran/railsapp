@@ -1,13 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  topic: MyString
-  content: MyText
-  user: one
-
-two:
-  title: MyString
-  topic: MyString
-  content: MyText
-  user: two
+test_one:
+  title: "test title one"
+  topic: "testing"
+  content: "#Test_header `code` test!!!"

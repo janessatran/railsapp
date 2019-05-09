@@ -21,6 +21,6 @@ class CheatsheetsController < ApplicationController
 
     def cheatsheet_params
       params.require(:cheathseet).permit(:title, :topic, :content,
-                                   :author)
+                                   :user_id)
     end
 end

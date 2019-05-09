@@ -2,8 +2,8 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: "Janessa", email: "janessa@example.com",
-                     password: "password", password_confirmation: "password" )
+    @user = User.new(name: "Example", email: "test@example.com",
+                     password: "passexample", password_confirmation: "passexample" )
   end
 
   test "should be valid" do
@@ -47,6 +47,14 @@ class UserTest < ActiveSupport::TestCase
   test "password should have a minimum length" do
     @user.password = @user.password_confirmation = "a" * 5
     assert_not @user.valid?
+  end
+
+  test "associated cheatsheets should be destroyed when a user is destroyed" do
+    @user.save
+    @user.cheatsheets.create!(title: "Test Header", topic: "test", content: "Lorem ipsum")
+    assert_difference 'Cheatsheet.count', -1 do
+      @user.destroy
+    end
   end
 
 end
