@@ -24,7 +24,7 @@ gem 'redcarpet'
 gem 'emd'
 gem 'coderay'
 gem 'rouge'
-
+gem 'rspec-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
