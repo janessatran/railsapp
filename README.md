@@ -1,11 +1,27 @@
 # railsapp 
-A rails web application that helps people organize themselves when learning something new. Not quite sure what to call it yet, which is why the repo is called 'railsapp' for now. 
+A rails web application that allows people to create notes in markdown related to whatever programming topic, displays those notes in a nice way, and lets them easily find their markdown notes with a search feature. Not quite sure what to call it yet, which is why the repo is called 'railsapp' for now. 
 
-Features to implement:
+## How things are structured so far (last updated: 05/08/19):
+### Models:
+- User: name, email, password, password_confirmation
+- Cheatsheet: title, topic, content (references User)
+
+### Controllers:
+- Users: new, show, create
+- Cheatsheets: new, show, create
+
+### Views:
+- Users: new (signup page), show (name, email, created at date... need to update this to show a profile!!!)
+- Cheatsheets: new (unimplemented), show (displays content field)
+
+## Features to implement:
 - User login 
 - User profile
-- creation of Goal
-- User Notes?
+- Cheatsheets
+- Search bar to find cheatsheets
+- Editing cheatsheets (through github?)
+
+
 
 ## Getting started
 

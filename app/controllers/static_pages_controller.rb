@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
       redirect_to(root_path, alert: 'Empty field!') && return
     else
       @parameter = params[:search].downcase
-      @results = Topic.all.where('lower(name) LIKE :search', search: "%#{@parameter}%")
+      @results = Cheatsheet.all.where('lower(topic) LIKE :search', search: "%#{@parameter}%")
     end
   end
 end

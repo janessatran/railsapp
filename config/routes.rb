@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'cheatsheets/new'
+  resources :cheatsheets
   get 'cheatsheets/show'
   # resources :cheatsheets
   get 'cheatsheets/markdown'

@@ -5,6 +5,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @cheatsheets = @user.cheatsheets
+  end
+
+  def index
+    @users = User.paginate(page: params[:page])
   end
 
   def create
@@ -15,6 +20,10 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
 
   private

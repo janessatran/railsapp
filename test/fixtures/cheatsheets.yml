@@ -1,0 +1,6 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test_one:
+  title: "test title one"
+  topic: "testing"
+  content: "#Test_header `code` test!!!"

@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_05_150509) do
+ActiveRecord::Schema.define(version: 2019_05_10_010414) do
 
-  create_table "topics", force: :cascade do |t|
-    t.string "name"
+  create_table "cheatsheets", force: :cascade do |t|
+    t.string "title", limit: 1000
+    t.string "topic"
+    t.text "content"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "visibility", default: true
+    t.index ["user_id", "created_at"], name: "index_cheatsheets_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_cheatsheets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
