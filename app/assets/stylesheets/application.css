@@ -12,4 +12,6 @@
  *
  *= require_tree .
  *= require_self
+ *= require md_simple_editor
+ *= require font-awesome
  */

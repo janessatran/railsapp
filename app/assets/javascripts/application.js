@@ -15,4 +15,4 @@
 // = require jquery
 // = require bootstrap-sprockets
 // = require turbolinks
-// = require_tree .
+//= require md_simple_editor
