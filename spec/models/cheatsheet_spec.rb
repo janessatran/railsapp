@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Cheatsheet, type: :model do
 
-  before :context do
-    @user = User.find(3)
+  before do
+    @user = create(:user)
     body = %{
       # Rspec
 

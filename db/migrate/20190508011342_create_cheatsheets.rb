@@ -8,6 +8,6 @@ class CreateCheatsheets < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :cheatsheets [:user_id, :created_at]
+    add_index :cheatsheets, [:user_id, :created_at]
   end
 end

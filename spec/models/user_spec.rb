@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before :context do 
-    @user = User.create!(name: "Example", email: "test4@example.com",
-    password: "passexample", password_confirmation: "passexample" )
+  before do 
+    @user = create(:user)
   end
 
   context 'When a new user is created' do
@@ -47,17 +46,13 @@ RSpec.describe User, type: :model do
 
     it 'should have associated cheatsheets destroyed when it is destroyed' do
       @user.save
-
       @user.cheatsheets.create!(title: "Test Header", topic: "test", content: "Lorem ipsum")
       @user.cheatsheets.create!(title: "Test Header 2", topic: "test", content: "Lorem ipsum dos")
-      
-      initial_count = Cheatsheet.count
+      @user.save
 
-      @user.destroy
-
-      final_count = Cheatsheeet.count
-
-      expect(intial_count - 2).to eq(final_count)
+      expect do
+         @user.destroy
+      end.to change { Cheatsheet.count }.from(Cheatsheet.count).to(Cheatsheet.count - 2)
     end
   end
 end
