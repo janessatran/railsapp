@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_10_010414) do
+ActiveRecord::Schema.define(version: 2019_05_14_000055) do
 
   create_table "cheatsheets", force: :cascade do |t|
     t.string "title", limit: 1000
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_05_10_010414) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "remember_digest"
   end
 
 end
