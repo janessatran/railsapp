@@ -18,7 +18,7 @@ RSpec.describe "UsersLogins", type: :request do
       expect(response).to render_template('sessions/new')
       post login_path, params: { session: {email: "test@example.com" , password: "password" } }
       expect(response).to render_template('sessions/new')
-      expect(flash[:danger]).not_to be_nil
+      expect(flash[:error]).not_to be_nil
       get root_path
       expect(flash[:alert]).to be_nil
     end

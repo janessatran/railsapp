@@ -1,0 +1,80 @@
+require 'rails_helper'
+
+RSpec.describe "Users Edits", type: :request do
+
+  before do
+    @user = create(:user) 
+    @alt_user = create(:user) 
+  end    
+
+  describe "GET /users_edits" do
+    it "works! (now write some real specs)" do
+      log_in_as(@user, password: 'password123', remember_me: '1')
+      get edit_user_path(@user.id)
+      expect(response).to have_http_status(200)
+    end
+  end
+
+  describe "unsuccessful edit" do
+    it "should not update if the name field is blank" do
+      log_in_as(@user, password: 'password123', remember_me: '1')
+      get edit_user_path(@user.id)
+      expect(response).to render_template('users/edit')
+      patch user_path(@user), params: { user: { name:  "",
+                                              email: "test@user.com",
+                                              password:              "foo",
+                                              password_confirmation: "bar" } }
+      expect(response).to render_template('users/edit')
+    end
+
+    it "should raise error message 'First name cant be blank' if name left blank" do
+      log_in_as(@user, password: 'password123', remember_me: '1')
+      get edit_user_path(@user.id)
+      expect(response).to render_template('users/edit')
+      patch user_path(@user), params: { user: { name:  "   ",
+                                              email: "phoebetester@user.com",
+                                              password:              "password",
+                                              password_confirmation: "password" } }
+      assert_select 'div.alert.alert-danger',  'The form contains 1 error.'
+    end
+
+    it "should redirect edit when logged in as wrong user" do
+      log_in_as(@alt_user, password: "password123")
+      get edit_user_path(@user)
+      expect(flash[:alert]).to be_nil
+      expect(response).to redirect_to(root_url)
+    end
+
+    it "should redirect update when logged in as wrong user" do
+      puts @alt_user.email
+      puts @alt_user.id
+      puts @user.email
+      puts @user.id
+      log_in_as(@alt_user, password: 'password123')
+      patch user_path(@user), params: { user: { name:  "   ",
+                                              password:              "password",
+                                              password_confirmation: "password" } }
+      expect(response).to redirect_to(root_url)
+    end
+  end
+
+  describe "successful edit" do
+    it "should reload the form with new information" do 
+      log_in_as(@user, password: 'password123', remember_me: '1')
+      get edit_user_path(@user.id)
+      expect(response).to render_template('users/edit')
+      name = "Foo Bar"
+      email = "foo@bar.com"
+      patch user_path(@user), params: { user: { name: name,
+                                                email: email,
+                                                password:    "",
+                                                password_confirmation: "" } }
+      expect(flash[:success]).to eq("Profile updated")
+      @user.reload
+      expect(@user.name).to eq(name)
+      expect(@user.email).to eq(email)
+    end
+  end
+
+      
+end

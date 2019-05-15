@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
 
-  get 'cheatsheets/new'
+  get '/create', to: 'cheatsheets#new'
   get 'cheatsheets/show'
 
   get '/search' => 'static_pages#search', :as => 'search_page'
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   resources :users
+  
 
 
 end
