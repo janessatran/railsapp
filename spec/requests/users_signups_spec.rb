@@ -16,11 +16,12 @@ RSpec.describe "UsersSignups", type: :request do
         post users_path, params: { user: { name:  "Example User",
                                            email: "user@example.com",
                                            password:              "password",
-                                           password_confirmation: "password" } }
+                                           password_confirmation: "password" }, 
+                                  session: { remember_me: '1'} }
       end.to change { User.count }.from(initial_count).to(initial_count + 1)
       follow_redirect!
       expect(response).to render_template('users/show')
-      assert is_logged_in?
+      expect(is_logged_in?).to eq(true)
     end
   end
 end
