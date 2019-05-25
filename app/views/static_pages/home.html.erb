@@ -16,8 +16,10 @@ and recording what they are learning.
       <%= button_tag "", :class => 'search-icon',:name => nil %>
     </div>  
   </div>  
+  <% if logged_in? %>
   <center>   
-  <%= link_to "Create a new cheatsheet", '/create', class: "btn btn-primary" %>
+  <%= link_to "Create a new cheatsheet", '/new', class: "btn btn-primary" %>
   </center>
+  <% end %>
 <% end %>
 </body>

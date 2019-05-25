@@ -93,8 +93,11 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     concurrent-ruby (1.1.5)
+    content_disposition (1.0.0)
     crass (1.0.4)
     diff-lcs (1.3)
+    down (4.8.1)
+      addressable (~> 2.5)
     emd (0.1.0)
       redcarpet
     erubi (1.8.0)
@@ -223,6 +226,9 @@ GEM
     selenium-webdriver (3.142.2)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
+    shrine (2.17.1)
+      content_disposition (~> 1.0)
+      down (~> 4.1)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -238,6 +244,8 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
+    trix (0.10.1)
+      rails
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -292,9 +300,11 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
+  shrine
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3!
+  trix
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)

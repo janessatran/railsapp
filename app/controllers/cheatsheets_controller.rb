@@ -1,6 +1,12 @@
 class CheatsheetsController < ApplicationController
+  before_action :logged_in_user, only: [:create, :destroy]
+
   def new
-    @cheatsheet = Cheatsheet.new
+    if logged_in?
+      @cheatsheet = Cheatsheet.new 
+    else
+      redirect_to login_url
+    end
   end
 
   def show
@@ -8,9 +14,9 @@ class CheatsheetsController < ApplicationController
   end
 
   def create
-    @cheatsheet = Cheatsheet.new(cheatsheet_params)
+    @cheatsheet = current_user.cheatsheets.build(cheatsheet_params)
     if @cheatsheet.save
-      flash[:success] = "Welcome to the Learning Together community!"
+      flash[:success] = "Your cheatsheet has been created!"
       redirect_to @cheatsheet
     else
       render 'new'
@@ -20,7 +26,7 @@ class CheatsheetsController < ApplicationController
   private
 
     def cheatsheet_params
-      params.require(:cheathseet).permit(:title, :topic, :content,
+      params.require(:cheatsheet).permit(:title, :topic, :content,
                                    :user_id)
     end
 end

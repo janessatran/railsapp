@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
 
-  get '/create', to: 'cheatsheets#new'
-  get 'cheatsheets/show'
+  get '/new', to: 'cheatsheets#new'
 
   get '/search' => 'static_pages#search', :as => 'search_page'
   get '/signup' => 'users#new', :as => 'signup'
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
   patch '/users/:id/edit', to: 'users#edit'
 
   resources :users
+  resources :cheatsheets,          only: [:create, :destroy, :show]
 
 
 
