@@ -20,10 +20,12 @@ RSpec.describe "Cheatsheets", type: :request do
     end
 
     it 'redirects users to login for users who are not logged in' do
-      log_out if logged_in?
-      get '/new'
+      delete logout_path #log out user
+      expect(is_logged_in?).to eq(false)
+      expect(response).to redirect_to(root_url)
+      follow_redirect!
+      get new_cheatsheet_path
       expect(response).to redirect_to(login_url)
     end
   end
-
 end

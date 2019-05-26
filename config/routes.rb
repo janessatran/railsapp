@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   patch '/users/:id/edit', to: 'users#edit'
 
   resources :users
-  resources :cheatsheets,          only: [:create, :destroy, :show]
+  resources :cheatsheets,          only: [:new, :create, :destroy, :show]
 
 
 
