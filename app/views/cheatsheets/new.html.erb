@@ -14,9 +14,9 @@
     <%= f.hidden_field :content, id: :subject_content %>
     <trix-editor input="subject_content"></trix-editor>
 
-    <%= f.label :topic %>
-    <%= f.text_field :topic, class: 'form-control' %>
-    
+    <%= f.label :tag_list, 'Tags (separated by commas)' %><br/>
+    <%= f.text_field :tag_list %>
+
     <%= f.submit "create", class: "btn btn-primary" %>
       
   <% end %>

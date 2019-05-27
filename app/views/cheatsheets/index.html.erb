@@ -1,0 +1,7 @@
+<h3>Search Result for tag: </h3> 
+<%= tag.name %>
+
+
+<% @cheatsheet.each do |c| %>
+  <h2><%= link_to c.title, Cheatsheet.find_by(id: c.id) %></h2>
+<% end %>

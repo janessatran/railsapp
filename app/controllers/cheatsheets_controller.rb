@@ -1,11 +1,19 @@
 class CheatsheetsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in_user, only: [:new, :create, :destroy]
 
   def new
     if logged_in?
       @cheatsheet = Cheatsheet.new 
     else
       redirect_to login_url
+    end
+  end
+
+  def index
+    if params[:tag]
+      @cheatsheet = Cheatsheet.tagged_with(params[:tag])
+    else
+      @cheatsheet = Cheatsheet.all
     end
   end
 
@@ -20,13 +28,14 @@ class CheatsheetsController < ApplicationController
       redirect_to @cheatsheet
     else
       render 'new'
+      flash[:danger]
     end
   end
 
   private
 
     def cheatsheet_params
-      params.require(:cheatsheet).permit(:title, :topic, :content,
-                                   :user_id)
+      params.require(:cheatsheet).permit(:title, :content,
+                                   :user_id, :tag_list)
     end
 end

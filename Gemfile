@@ -23,6 +23,7 @@ gem 'coderay'
 gem 'rouge'
 gem 'rspec-rails'
 gem 'assert_difference'
+gem 'acts-as-taggable-on', '~> 6.0' #must be this version for Rails5
 
 # Adding to avoid polling for changes
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
