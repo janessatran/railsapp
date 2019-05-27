@@ -1,1 +1,118 @@
-<%= @user.name %>, <%= @user.email %>, <%= @user.created_at %>, <%= @user.updated_at %>
+
+<div class="container">
+<div class="row">
+      <div class="col-xs-12 col-sm-9">
+        
+        <!-- User profile -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">User profile</h4>
+          </div>
+          <div class="panel-body">
+            <div class="profile__header">
+              <h4><%= @user.name %></h4>
+              <p class="text-muted">
+                ADD ABOUT ME SECTION TO MODEL
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- User info -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">User info</h4>
+          </div>
+          <div class="panel-body">
+            <table class="table profile__table">
+              <tbody>
+                <tr>
+                  <th><strong>Title</strong></th>
+                  <td>ADD TITLE SECTION TO MODEL</td>
+                </tr>
+                <tr>
+                  <th><strong>Learning goals</strong></th>
+                  <td>ADD LEARNING GOALS TO MODEL</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Community -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">Community</h4>
+          </div>
+          <div class="panel-body">
+            <table class="table profile__table">
+              <tbody>
+                <tr>
+                  <th><strong>Cheatsheets</strong></th>
+                  <td><%= @user.cheatsheets.count %></td>
+                </tr>
+                <tr>
+                <tr>
+                  <th><strong>Kudos ✨</strong></th>
+                  <td><%= "ADD KUDOS COUNT TO MODEL" %></td>
+                </tr>
+                  <th><strong>Member since</strong></th>
+                  <td><%= @user.created_at.strftime("%m/%d/%Y") %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Latest posts -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">Cheatsheet contributions</h4>
+          </div>
+          <div class="panel-body">
+            <div class="profile__comments">
+                <% @user.cheatsheets.all.each do |c| %>
+                    <div class="profile-comments__item">
+                        <div class="profile-comments__body">
+                            <h5 class="profile-comments__sender">
+                                <%= link_to c.title, Cheatsheet.find_by(id: c.id) %> </li>
+                                <small><%= c.created_at.strftime("%m/%d/%Y") %></small>
+                            </h5>
+                        </div>
+                        <div class="profile-comments__content">
+                            Tags: <%= c.tag_list %>
+                        </div>
+                    </div>
+                 <% end %>
+              </div>
+            </div>
+        </div>
+
+      </div>
+      <div class="col-xs-12 col-sm-2">
+        
+        <!-- Contact user -->
+        <p>
+          <a href="#" class="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form">
+            Give kudos ✨
+          </a>
+        </p>
+
+        <hr class="profile__contact-hr">
+        
+        <!-- Contact info -->
+        <div class="profile__contact-info">
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+              <i class="fa fa-github"></i>
+            </div>
+            <div class="profile__contact-info-body">
+              <h5 class="profile__contact-info-heading">Github</h5>
+              ADD GITHUB USERNAME TO MODEL
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>
