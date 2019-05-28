@@ -8,13 +8,13 @@
         <span class="icon-bar"></span>
       </button>
       <div class ="navbar-brand">
-      <%= link_to "Cheatsheets", root_path %>
+      <%= link_to "til", root_path %>
       </div>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li>
-          <a href="#">Help</a>
+          <a href="/new">Create a Cheatsheet</a>
         </li>
         <% if logged_in? %>
         <li><%= link_to "Users", users_path %></li>

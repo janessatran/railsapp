@@ -16,4 +16,5 @@
 // = require bootstrap-sprockets
 // = require turbolinks
 //= require md_simple_editor
+//= require trix
 

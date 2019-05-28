@@ -1,5 +1,23 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="trix.css">
+  <script type="text/javascript" src="trix.js"></script>
+</head>
+<body>
+
 <h1>New Cheatsheet</h1>
-<h4>update this page!!!<h4>
-<%= md_simple_editor do %>
-    <%= text_area_tag :content %>
-<% end %>
+<%= form_for(@cheatsheet) do |f| %>
+  
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+    <br><br>
+    
+    <%= f.hidden_field :content, id: :subject_content %>
+    <trix-editor input="subject_content"></trix-editor>
+
+    <%= f.label :tag_list, 'Tags (separated by commas)' %><br/>
+    <%= f.text_field :tag_list %>
+
+    <%= f.submit "create", class: "btn btn-primary" %>
+      
+  <% end %>
+</body>
