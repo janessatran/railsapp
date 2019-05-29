@@ -91,4 +91,12 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :test
+  # Use this on the cloud IDE.
+  # config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  # Use this if developing on localhost.
+  config.action_mailer.default_url_options = { host: 'localhost:3000' , protocol: 'http' }
+
 end

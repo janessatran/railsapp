@@ -13,7 +13,7 @@ RSpec.describe "Cheatsheets", type: :request do
       initial_count = Cheatsheet.count
       expect do
         post cheatsheets_path, params: { cheatsheet: { title: 'title', 
-                                                      topic: 'test', 
+                                                      tag_list: 'test', 
                                                       content: 'Lorem ipsum'}  }
       end.to change { Cheatsheet.count }.from(initial_count).to(initial_count + 1)                 
       expect(flash[:success]).to eq("Your cheatsheet has been created!")

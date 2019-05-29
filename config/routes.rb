@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   root 'static_pages#home'
 
   get '/new', to: 'cheatsheets#new'
@@ -20,6 +22,8 @@ Rails.application.routes.draw do
   resources :users
   resources :cheatsheets,          only: [:new, :create, :destroy, :show, :index]
   resources :tags, only: [:index, :show]
+  resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
 
 
 end
