@@ -46,8 +46,8 @@ RSpec.describe User, type: :model do
 
     it 'should have associated cheatsheets destroyed when it is destroyed' do
       @user.save
-      @user.cheatsheets.create!(title: "Test Header", topic: "test", content: "Lorem ipsum")
-      @user.cheatsheets.create!(title: "Test Header 2", topic: "test", content: "Lorem ipsum dos")
+      @user.cheatsheets.create!(title: "Test Header", tag_list: "test", content: "Lorem ipsum")
+      @user.cheatsheets.create!(title: "Test Header 2", tag_list: "test", content: "Lorem ipsum dos")
       @user.save
 
       expect do

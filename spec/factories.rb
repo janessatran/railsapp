@@ -4,6 +4,8 @@ FactoryBot.define do
         u.sequence(:email) { |n| "tester#{n}@email.com"}
         password { "password123" }
         password_confirmation { "password123" }
+        activated { true }
+        activated_at { Time.zone.now }
     end
 
     factory :admin_user, class: User do |u|
@@ -12,5 +14,7 @@ FactoryBot.define do
         password {'password123'}
         password_confirmation {'password123'}
         admin {true}
+        activated { true }
+        activated_at { Time.zone.now }
     end
 end
