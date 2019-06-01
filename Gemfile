@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -66,7 +66,7 @@ gem 'trix'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  gem 'sqlite3', '~> 1.3.6'
+gem 'sqlite3', git: "https://github.com/sparklemotion/sqlite3-ruby"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
@@ -90,7 +90,7 @@ group :test do
 end
 
 group :production, :staging do
-  gem 'pg'
+  gem 'pg', '0.20.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
