@@ -15,7 +15,7 @@ RSpec.describe "UsersIndices", type: :request do
       expect(response).to render_template('users/index')
       assert_select "div.pagination"
       User.paginate(page: 1).each do |user|
-        assert_select 'a[href=?]', user_path(user), text: user.name
+        assert_select 'a[href=?]', user_path(@user), text: @user.name
       end
     end
   end
