@@ -104,9 +104,9 @@ RSpec.describe "Users Edits", type: :request do
       assert_select "div.pagination"
       first_page_of_users = User.paginate(page: 1)
       first_page_of_users.each do |user|
-        assert_select 'a[href=?]', user_path(user), text: user.name
-        unless user == @admin_user
-          assert_select 'a[href=?]', user_path(user), text: 'delete'
+        assert_select 'a[href=?]', user_path(@user), text: @user.name
+        unless @user == @admin_user
+          assert_select 'a[href=?]', user_path(@user), text: 'delete'
         end
       end
       initial_count = User.count
