@@ -97,13 +97,12 @@ Rails.application.configure do
   # Use this on the cloud IDE.
   # config.action_mailer.default_url_options = { host: host, protocol: 'https' }
   # Use this if developing on localhost.
-  host = 'tilnotes.herokuapp.com'
   config.action_mailer.default_url_options = { host: host , protocol: 'https' }
   
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = '<your heroku app>.herokuapp.com'
+  host = 'tilnotes.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
