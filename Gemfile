@@ -66,7 +66,7 @@ gem 'trix'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  gem 'sqlite3', git: "https://github.com/larskanis/sqlite3-ruby", branch: "add-gemspec"
+  gem 'sqlite3', '~> 1.3', '>= 1.3.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
@@ -89,7 +89,7 @@ group :test do
   gem 'chromedriver-helper', '1.2.0'
 end
 
-group :production do
+group :production, :staging do
   gem 'pg'
 end
 
