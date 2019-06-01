@@ -98,7 +98,7 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = { host: host, protocol: 'https' }
   # Use this if developing on localhost.
   host = 'tilnotes.herokuapp.com'
-  config.action_mailer.default_url_options = { host: host , protocol: 'http' }
+  config.action_mailer.default_url_options = { host: host , protocol: 'https' }
   
 
   config.action_mailer.raise_delivery_errors = true
