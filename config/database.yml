@@ -20,8 +20,9 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+
 production:
-  adapter: postgresql
-  database: db/production.pg
-  pool: 5
-  timeout: 5000
+      adapter: postgresql
+      database: my_database_production
+      pool: 5
+      timeout: 5000
