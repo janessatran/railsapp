@@ -41,6 +41,11 @@
   <% end %>
 
   <br><br><br>
+  <% if logged_in? %>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  <% end %>
 </div>
 </div>
 

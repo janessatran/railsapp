@@ -3,6 +3,18 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   before do 
     @user = create(:user)
+    @other_user = create(:user)
+  end
+
+  context "relationships" do
+    it "should follow and unfollow a user" do
+      expect(@user.following?(@other_user)).not_to eq(true)
+      @other_user.follow(@user)
+      expect(@other_user.following?(@user)).to eq(true)
+      expect(@user.followers.include?(@other_user)).to eq(true)
+      @other_user.unfollow(@user)
+      expect(@other_user.following?(@user)).not_to eq(true)
+    end
   end
 
   context 'When a new user is created' do

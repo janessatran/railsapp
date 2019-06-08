@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_08_020835) do
+ActiveRecord::Schema.define(version: 2019_06_08_201828) do
 
   create_table "cheatsheets", force: :cascade do |t|
     t.string "title", limit: 1000
@@ -22,27 +22,6 @@ ActiveRecord::Schema.define(version: 2019_06_08_020835) do
     t.boolean "visibility", default: true
     t.index ["user_id", "created_at"], name: "index_cheatsheets_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_cheatsheets_on_user_id"
-  end
-
-  create_table "profiles", force: :cascade do |t|
-    t.text "bio"
-    t.string "title", default: "Student"
-    t.text "goals"
-    t.string "github_username"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
-  end
-
-  create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followed_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -89,5 +68,17 @@ ActiveRecord::Schema.define(version: 2019_06_08_020835) do
     t.string "twitter"
     t.text "learning_goals"
   end
+  
+  create_table "relationships", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
+  add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
 
 end

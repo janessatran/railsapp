@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   get '/new', to: 'cheatsheets#new'
 
-
   get '/search' => 'static_pages#search', :as => 'search_page'
   get '/signup' => 'users#new', :as => 'signup'
   post '/signup',  to: 'users#create'
@@ -17,13 +16,16 @@ Rails.application.routes.draw do
   patch '/users/:id/edit', to: 'users#edit'
 
   get 'tags/:tag', to: 'cheatsheets#index', as: :tag
+  
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
-
-  resources :users
   resources :cheatsheets,          only: [:new, :create, :destroy, :show, :index]
   resources :tags, only: [:index, :show]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-
-
+  resources :relationships,       only: [:create, :destroy]
 end

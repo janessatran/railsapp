@@ -93,9 +93,9 @@
         
         <!-- Contact user -->
         <p>
-          <a href="#" class="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form">
-            Give kudos ✨
-          </a>
+        <% if logged_in? %>
+          <%= render 'follow_form' %>
+        <% end %>
         </p>
 
         <hr class="profile__contact-hr">
