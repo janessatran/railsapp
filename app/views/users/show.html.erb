@@ -1,8 +1,8 @@
 
 <div class="container">
+<br><br>
 <div class="row">
       <div class="col-xs-12 col-sm-9">
-        
         <!-- User profile -->
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -12,7 +12,7 @@
             <div class="profile__header">
               <h4><%= @user.name %></h4>
               <p class="text-muted">
-                ADD ABOUT ME SECTION TO MODEL
+                <%= @user.bio %>
               </p>
             </div>
           </div>
@@ -28,11 +28,11 @@
               <tbody>
                 <tr>
                   <th><strong>Title</strong></th>
-                  <td>ADD TITLE SECTION TO MODEL</td>
+                  <td><%= @user.title %></td>
                 </tr>
                 <tr>
                   <th><strong>Learning goals</strong></th>
-                  <td>ADD LEARNING GOALS TO MODEL</td>
+                  <td><%= @user.learning_goals %></td>
                 </tr>
               </tbody>
             </table>
@@ -108,7 +108,16 @@
             </div>
             <div class="profile__contact-info-body">
               <h5 class="profile__contact-info-heading">Github</h5>
-              ADD GITHUB USERNAME TO MODEL
+              <%= @user.github %>
+            </div>
+          </div>
+            <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+              <i class="fa fa-twitter"></i>
+            </div>
+            <div class="profile__contact-info-body">
+              <h5 class="profile__contact-info-heading">Twitter</h5>
+              <%= @user.twitter %>
             </div>
           </div>
         </div>

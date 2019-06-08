@@ -12,6 +12,23 @@
   
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+    
+    <%= f.label :bio %>
+    <%= f.text_area :bio, :cols => "10", :rows => "10" %>
+
+    
+    <%= f.label :learning_goals %>
+    <%= f.text_area :learning_goals, :cols => "10", :rows => "10" %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+    
+    <%= f.label :github %>
+    <%= f.text_field :github, class: 'form-control' %>
+
+    <%= f.label :twitter %>
+    <%= f.text_field :twitter, class: 'form-control' %>
   
     <%= f.submit yield(:button_text), class: "btn btn-primary" %>
   <% end %>
