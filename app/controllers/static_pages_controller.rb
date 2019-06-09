@@ -1,5 +1,10 @@
 class StaticPagesController < ApplicationController
-  def home; end
+  def home
+    if logged_in?
+      @cheatsheets  = current_user.cheatsheets.build
+      @feed_items = current_user.feed.paginate(page: params[:page])
+    end
+  end
 
   def search
     if params[:search].blank?

@@ -155,13 +155,15 @@ input, textarea, select, .uneditable-input {
   overflow: auto;
   margin-top: 0;
   padding: 0;
+  display: -moz-inline-box;
+  text-align: center;
   a {
-    float: left;
-    padding: 0 10px;
+    // float: left;
+    padding: 0 15px;
     border-left: 1px solid $gray-lighter;
     color: gray;
     &:first-child {
-      padding-left: 0;
+      // padding-left: 0;
       border: 0;
     }
     &:hover {
@@ -170,6 +172,6 @@ input, textarea, select, .uneditable-input {
     }
   }
   strong {
-    display: block;
+    display: inline-block;
   }
 }

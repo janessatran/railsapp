@@ -4,6 +4,7 @@ RSpec.describe User, type: :model do
   before do 
     @user = create(:user)
     @other_user = create(:user)
+    @third_user = create(:user)
   end
 
   context "relationships" do
@@ -14,6 +15,22 @@ RSpec.describe User, type: :model do
       expect(@user.followers.include?(@other_user)).to eq(true)
       @other_user.unfollow(@user)
       expect(@other_user.following?(@user)).not_to eq(true)
+    end
+
+    it "should show a feed with the right posts based on following relationships" do
+      # Posts from followed user
+      @third_user.cheatsheets.each do |post_following|
+        expect(@user.feed.include?(post_self)).to eq(true)
+      end
+      # Posts from self
+      @user.cheatsheets.each do |post_self|
+        expect(@user.feed.include?(post_self)).to eq(true)
+      end
+
+      # Posts from unfollowed user
+      @other_user.cheatsheets.each do |post_unfollowed|
+        expect(@user.feed.include?(post_unfollowed)).not_to eq(true)
+      end
     end
   end
 

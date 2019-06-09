@@ -1,0 +1,11 @@
+<li id="<%= cheatsheet.id %>">
+  <span class="user"><%= link_to cheatsheet.user.name, cheatsheet.user %></span>
+  <span class="content"><%= cheatsheet.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(cheatsheet.created_at) %> ago.
+    <% if current_user?(cheatsheet.user) %>
+      <%= link_to "delete", cheatsheet, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

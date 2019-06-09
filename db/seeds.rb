@@ -1,14 +1,22 @@
-User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
+User.create!(name:  "Janessa Admin",
+             email: "janessa@admin.com",
+             password:              "password",
+             password_confirmation: "password",
              admin: true,
              activated: true,
              activated_at: Time.zone.now)
 
+users = User.order(:activated_at).take(6)
+50.times do
+  title = Faker::Lorem.sentence(1)
+  tag_list = "test, test2"
+  content = Faker::Lorem.sentence(4)
+  users.each { |user| user.cheatsheets.create!(title: title, content: content, tag_list: tag_list) }
+end
+
 99.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
+  email = "example-#{n+1}@example.org"
   password = "password"
   User.create!(name:  name,
                email: email,

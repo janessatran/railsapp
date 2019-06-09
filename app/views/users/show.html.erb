@@ -89,13 +89,16 @@
         </div>
 
       </div>
-      <div class="col-xs-12 col-sm-2">
+      <div class="col-xs-12 col-sm-3">
         
         <!-- Contact user -->
         <p>
         <% if logged_in? %>
           <%= render 'follow_form' %>
         <% end %>
+        <section class="stats">
+              <%= render 'shared/stats' %>
+        </section>
         </p>
 
         <hr class="profile__contact-hr">

@@ -28,6 +28,7 @@ class CheatsheetsController < ApplicationController
       redirect_to @cheatsheet
     else
       render 'new'
+      @feed_items = []
       flash[:danger]
     end
   end
