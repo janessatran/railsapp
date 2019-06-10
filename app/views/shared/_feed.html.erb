@@ -1,6 +1,19 @@
-<% if @feed_items.any? %>
-  <ol class="cheatsheet">
-    <%= render @feed_items %>
-  </ol>
-  <%= will_paginate @feed_items %>
-<% end %>
+<div class="profile__comments">
+  <% if @feed_items.any? %>
+    <% @feed_items.each do |c| %>
+        <div class="profile-comments__item">
+            <div class="profile-comments__body">
+                <h5 class="profile-comments__sender">
+                    <%= link_to c.title, Cheatsheet.find_by(id: c.id) %> </li>
+                    <small><%= c.created_at.strftime("%m/%d/%Y") %></small>
+                </h5>
+            </div>
+            <div class="profile-comments__content">
+                Tags: <%= c.tag_list %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+    <%= will_paginate @feed_items %>
+  <% end %>
+</div>

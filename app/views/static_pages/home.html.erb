@@ -31,7 +31,7 @@
   </div>
 
   <hr>
-  <h3>Explore popular topics</h3>
+  <h3>Explore Popular Topics</h3>
   <% button_colors = ["red", "cyan", "blue", "purple", "yellow", "green"] %>
   <% button_color_idx = 0 %>
   <% ActsAsTaggableOn::Tag.most_used(10).each do |tag| %>
@@ -42,7 +42,8 @@
 
   <br><br><br>
   <hr>
-  <h3>Cheatsheets by People you Follow</h3>
+  <h3>Community Activity</h3>
+  <br>
   <center>
   <% if logged_in? %>
     <section class="stats">
