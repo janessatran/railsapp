@@ -1,50 +1,61 @@
-# railsapp 
-A rails web application that allows people to create notes in markdown related to whatever programming topic, displays those notes in a nice way, and lets them easily find their markdown notes with a search feature. Not quite sure what to call it yet, which is why the repo is called 'railsapp' for now. 
+# TIL Notes
+I built this project while going through Rails Tutorial to learn Ruby on Rails. It was inspired by my friends who taught me about creating a "Today I learned" (TIL) repo to write down all my notes of new things I've learned. Users can create an account to create a cheatsheet contribution to the learning community. They can also "favorite" other user's cheatsheets and follow users. 
+Still a work in progress, but you can view the application here: [https://tilnotes.herokuapp.com/](https://tilnotes.herokuapp.com/)
 
-## How things are structured so far (last updated: 05/08/19):
-### Models:
-- User: name, email, password, password_confirmation
-- Cheatsheet: title, topic, content (references User)
+## Development Notes
 
-### Controllers:
-- Users: new, show, create
-- Cheatsheets: new, show, create
-
-### Views:
-- Users: new (signup page), show (name, email, created at date... need to update this to show a profile!!!)
-- Cheatsheets: new (unimplemented), show (displays content field)
-
-## Features to implement:
-- User login 
-- User profile
-- Cheatsheets
-- Search bar to find cheatsheets
-- Editing cheatsheets (through github?)
+### Accomplished by 06/15/2019
+* Create User authentication with cookie-based Sessions resource
+* Create tables for users, cheatsheets, relationships, favorites
+* Add admin privileges to delete users
+* Enable users to search through cheatsheets by tag
+* Enable users to follow/unfollow other Users
+* Enable users to create cheatsheets
+* Enables users to edit their profiles
+* Enable users to "favorite" other user's cheatsheets
+* Practice test-driven-development and write tests for models/controllers
 
 
+### Future Tasks
+* Update the front-end of the application
+* Add link on user profile to enable easy access to their "favorite" cheatsheets
 
-## Getting started
+### Bugs
+* None yet... but I'm on the lookout!
 
-To get started with the app, clone the repo and then install the needed gems:
+## Install
 
-```
-$ bundle install --without production
-```
+### Clone the repository
 
-Next, migrate the database:
-
-```
-$ rails db:migrate
+```shell
+git clone git@github.com:janessatran/railsapp.git
+cd railsapp
 ```
 
-Finally, run the test suite to verify that everything is working correctly:
+### Check your Ruby version
 
-```
-$ rails test
+```shell
+ruby -v
 ```
 
-If the test suite passes, you'll be ready to run the app in a local server:
+The output should start with something like `ruby 2.6.3`
 
+If not, install the right ruby version using [rbenv](https://github.com/rbenv/rbenv) (it could take a while):
+
+```shell
+rbenv install 2.6.3
 ```
-$ rails server
+
+### Install dependencies
+
+Using [Bundler](https://github.com/bundler/bundler)
+```shell
+bundle
+```
+
+
+### Initialize the database
+
+```shell
+rails db:create db:migrate db:seed
 ```
