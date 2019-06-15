@@ -23,9 +23,17 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users do
+    member do
+      get :favorites
+    end
+  end
+
   resources :cheatsheets,          only: [:new, :create, :destroy, :show, :index]
   resources :tags, only: [:index, :show]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :relationships,       only: [:create, :destroy]
+  resources :favorites,       only: [:create, :destroy]
+
 end

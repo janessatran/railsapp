@@ -1,0 +1,2 @@
+$("#favorite_form").html("<%= escape_javascript(render('cheatsheets/favorite')) %>");
+$("#favorites").html('<%= @cheatsheet.favorites.count %>');

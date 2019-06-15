@@ -1,0 +1,6 @@
+<%= form_for(@cheatsheet.favorites.find_by(user_id: current_user.id, cheatsheet_id: @cheatsheet.id),
+             html: { method: :delete },
+             remote: true) do |f| %>
+ <div><%= hidden_field_tag :cheatsheet_id, @cheatsheet.id %></div>
+  <%= f.submit "Unfavorite", class: "btn btn-primary" %>
+<% end %>

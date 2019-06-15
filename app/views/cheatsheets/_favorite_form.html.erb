@@ -1,0 +1,9 @@
+<% unless current_user?(current_user.id) %>
+  <div id="favorite_form">
+  <% if Favorite.where(user_id: current_user.id, cheatsheet_id: @cheatsheet.id).exists? %>
+    <%= render 'unfavorite' %>
+  <% else %>
+    <%= render 'favorite' %>
+  <% end %>
+  </div>
+<% end %>

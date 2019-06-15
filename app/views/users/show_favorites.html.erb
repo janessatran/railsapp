@@ -1,0 +1,25 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1><%= @user.name %></h1>
+      <span><%= link_to "view my profile", @user %></span><br><br>
+      <span><b>Cheatsheets:</b> <%= @user.cheatsheets.count %></span>
+      <span><b>Favorites:</b> <%= @user.favorites.count %></span>
+
+    </section>
+    <br><br>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @favorites.any? %>
+      <ul class="users follow">
+        <%= render '/users/favorite' %>
+      </ul>
+          <%= will_paginate @favorites %>
+    <% end %>
+  </div>
+</div>

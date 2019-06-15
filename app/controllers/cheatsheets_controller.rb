@@ -33,6 +33,12 @@ class CheatsheetsController < ApplicationController
     end
   end
 
+  def favorites
+    @title = "Favorites"
+    @cheatsheet  = Cheatsheet.find(params[:id])
+    @favorites = @cheatsheets.favorites.paginate(page: params[:page])
+  end
+  
   private
 
     def cheatsheet_params

@@ -1,5 +1,8 @@
 class Cheatsheet < ApplicationRecord
   belongs_to :user
+  has_many :favorites, dependent: :destroy
+  
+
   # before_save { self.topic = topic.downcase }
   acts_as_taggable
 

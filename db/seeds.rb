@@ -6,7 +6,7 @@ User.create!(name:  "Janessa Admin",
              activated: true,
              activated_at: Time.zone.now)
 
-users = User.order(:activated_at).take(6)
+users = User.order(:activated_at).take(20)
 50.times do
   title = Faker::Lorem.sentence(1)
   tag_list = "test, test2"

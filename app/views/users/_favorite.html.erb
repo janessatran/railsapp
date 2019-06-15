@@ -1,0 +1,6 @@
+<% @favorites.each do |fav| %>
+  <% cheatsheet = Cheatsheet.find(fav.cheatsheet_id) %>
+  <li>
+    <%= link_to cheatsheet.title, cheatsheet %>
+  </li>
+<% end %>

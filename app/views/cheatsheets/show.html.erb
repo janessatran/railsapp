@@ -1,8 +1,15 @@
+<%= csrf_meta_tags %>
+
 <h1><%= @cheatsheet.title %></h1>
 <b>Author: </b>
 <%= link_to User.find_by(id: @cheatsheet.user_id).name, User.find_by(id: @cheatsheet.user_id) %> <br>
 <b>Created Date: </b>
+
 <%= @cheatsheet.created_at.strftime('%Y-%m-%d') %>
+<br><br>
+<strong id="favorites" class="stat">
+  <%= render 'shared/favorite_stats' %>
+</strong>
 <br><br>
 <%= (@cheatsheet.content).html_safe %> 
 
@@ -10,3 +17,6 @@
 
 <h4>Tags</h4>
 <%= render @cheatsheet.tags %>
+<%= render 'favorite_form' if logged_in? %>
+
+
