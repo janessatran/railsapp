@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
     :following, :followers, :favorites, :favorited]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :correct_user,   only: [:edit, :update, :private_cheatsheets]
   before_action :admin_user,     only: :destroy
   protect_from_forgery
 
@@ -77,6 +77,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @favorites = @user.favorites.paginate(page: params[:page])
     render 'show_favorites'
+  end
+
+  def public_cheatsheets
+    @user = User.find(params[:id])
+    @public_cheatsheets = @user.cheatsheets.where(visibility: true)
+  end
+
+  def private_cheatsheets
+    @user = User.find(params[:id])
+    @private_cheatsheets = @user.cheatsheets.where(visibility: false)
   end
 
   private

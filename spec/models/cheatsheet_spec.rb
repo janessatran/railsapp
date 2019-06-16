@@ -28,8 +28,8 @@ RSpec.describe Cheatsheet, type: :model do
       end
       ```
     }
-    @cheatsheet = @user.cheatsheets.build(title: "Rspec Basics", topic: "rspec", 
-                                 content: body, tag_list: "test")
+    @cheatsheet = @user.cheatsheets.create(title: "Rspec Basics", topic: "rspec", 
+                                 content: body, tag_list: "test", visibility: false)
   end
 
   context 'When a new cheatsheet is created' do
@@ -47,18 +47,13 @@ RSpec.describe Cheatsheet, type: :model do
       expect(@cheatsheet).not_to be_valid
     end
 
-    it 'should have a topic' do
-      @cheatsheet.tag_list = "  "
-      expect(@cheatsheet).not_to be_valid
-    end
-
     it 'should have a title' do
       @cheatsheet.title = "      "
       expect(@cheatsheet).not_to be_valid
     end
 
-    it 'should have default visibility set to true' do
-      expect(@cheatsheet.visibility).to eq(true)
+    it 'should have default visibility set to false' do
+      expect(@cheatsheet.visibility).to eq(false)
     end
   end
 

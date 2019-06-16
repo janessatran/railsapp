@@ -17,6 +17,9 @@
     <%= f.label :tag_list, 'Tags (separated by commas)' %><br/>
     <%= f.text_field :tag_list %>
 
+    <%= f.label :visibility, "Make public" %>
+    <%= f.check_box :visibility, id: 'visibility-checkbox', class: "custom-control-input" %>
+
     <%= f.submit "create", class: "btn btn-primary" %>
       
   <% end %>

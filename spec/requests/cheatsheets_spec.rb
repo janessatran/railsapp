@@ -19,6 +19,19 @@ RSpec.describe "Cheatsheets", type: :request do
       expect(flash[:success]).to eq("Your cheatsheet has been created!")
     end
 
+    it "should have a default private visibility if the checkbox is not checked" do
+      visit cheatsheets_path
+      within("#cheatsheet") do
+        fill_in 'title', with: 'testing cheatsheet'
+        fill_in 'content', with: 'This is a test.'
+        fill_in 'tag_list', with: 'rspec-test'
+        find(:css, "#visibility-checkbox").set(true)
+ 
+      end
+      click_button 'Sign in'
+      expect(page).to have_content 'Success'
+    end
+
     it 'redirects users to login for users who are not logged in' do
       delete logout_path #log out user
       expect(is_logged_in?).to eq(false)
