@@ -19,6 +19,7 @@ Still a work in progress, but you can view the application here: [https://tilnot
 ### Future Tasks
 * Update the front-end of the application
 * Add link on user profile to enable easy access to their "favorite" cheatsheets
+* Add option to make cheatsheet private
 
 ### Bugs
 * None yet... but I'm on the lookout!
