@@ -48,21 +48,10 @@ class CheatsheetsController < ApplicationController
                                    :user_id, :tag_list, :visibility)
     end
 
-    # Confirms the correct user.
-    def correct_user
-      if logged_in?
-        @user = User.find(params[:id])
-        redirect_to(root_url) unless current_user?(@user)
-      else
-        redirect_to(root_url)
-      end
-    end
-
     def require_public
       @cheatsheet = Cheatsheet.find(params[:id])
-      if @cheatsheet.visibility == false
-        redirect_to root_url unless logged_in? && correct_user
+      if @cheatsheet[:visibility] == false
+        redirect_to(root_url)  unless (logged_in? && (current_user.id == @cheatsheet.user_id))
       end
     end
-
 end
