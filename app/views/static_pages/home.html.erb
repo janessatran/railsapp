@@ -32,12 +32,10 @@
 
   <hr>
   <h3>Explore Popular Topics</h3>
-  <% button_colors = ["red", "cyan", "blue", "purple", "yellow", "green"] %>
-  <% button_colors.cycle.each do |color| %>
-    <% ActsAsTaggableOn::Tag.most_used(10).each do |tag| %>
-      <% class_string = "btn " + color + " mini" %>
-      <%= link_to tag, "/search?search=#{tag}", class: class_string %>
-    <% end %>
+  <% button_colors = ["red", "cyan", "blue", "purple", "yellow", "green"].cycle.each %>
+  <% ActsAsTaggableOn::Tag.most_used(10).each do |tag| %>
+    <% class_string = "btn " + button_colors.next + " mini" %>
+    <%= link_to tag, "/search?search=#{tag}", class: class_string %>
   <% end %>
 
   <br><br><br>
