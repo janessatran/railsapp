@@ -4,6 +4,7 @@ RSpec.describe "Cheatsheets", type: :request do
 
   before do
     @user = create(:user)
+    @other_user = create(:user)
     log_in_as(@user, password: 'password123', remember_me: '1')
   end
 
@@ -19,19 +20,6 @@ RSpec.describe "Cheatsheets", type: :request do
       expect(flash[:success]).to eq("Your cheatsheet has been created!")
     end
 
-    it "should have a default private visibility if the checkbox is not checked" do
-      visit cheatsheets_path
-      within("#cheatsheet") do
-        fill_in 'title', with: 'testing cheatsheet'
-        fill_in 'content', with: 'This is a test.'
-        fill_in 'tag_list', with: 'rspec-test'
-        find(:css, "#visibility-checkbox").set(true)
- 
-      end
-      click_button 'Sign in'
-      expect(page).to have_content 'Success'
-    end
-
     it 'redirects users to login for users who are not logged in' do
       delete logout_path #log out user
       expect(is_logged_in?).to eq(false)
@@ -39,6 +27,35 @@ RSpec.describe "Cheatsheets", type: :request do
       follow_redirect!
       get new_cheatsheet_path
       expect(response).to redirect_to(login_url)
+    end
+  end
+
+  describe 'show cheatsheet' do
+    context 'if the visibility of the cheatsheet is private' do 
+
+      it 'should not be visible to users who are not the original author' do
+        @cheatsheet = @user.cheatsheets.create(title: "This is a visibility test", 
+          content: "Testing", tag_list: "test", visibility: false)
+
+        delete logout_path #log out user
+        follow_redirect!
+        log_in_as(@other_user, password: 'password123', remember_me: '1')
+
+        get cheatsheet_path(@cheatsheet)
+
+        expect(response.code).to eq('302')
+        expect(response).to redirect_to(root_url)
+      end
+
+      it 'should be visible to the user who is the original author' do
+        @cheatsheet = @user.cheatsheets.create(title: "This is a visibility test", 
+          content: "Testing", tag_list: "test", visibility: false)
+
+        get cheatsheet_path(@cheatsheet)
+
+        expect(response.code).to eq('200')
+        expect(response.body).to include("This is a visibility test")
+      end
     end
   end
 end
