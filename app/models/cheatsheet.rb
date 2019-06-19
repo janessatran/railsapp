@@ -1,9 +1,8 @@
 class Cheatsheet < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
-  
+  attr_accessor :visibility
 
-  # before_save { self.topic = topic.downcase }
   acts_as_taggable
 
   validates :title, presence: true, length: { maximum: 1000 }
