@@ -57,8 +57,8 @@ RSpec.describe Cheatsheet, type: :model do
       expect(@cheatsheet).not_to be_valid
     end
 
-    it 'should have default visibility set to true' do
-      expect(@cheatsheet.visibility).to eq(true)
+    it 'should have default visibility set to false' do
+      expect(@cheatsheet.visibility).to eq(false)
     end
   end
 
