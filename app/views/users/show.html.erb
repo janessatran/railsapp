@@ -67,7 +67,7 @@
           </div>
           <div class="panel-body">
             <div class="profile__comments">
-                <% @user.cheatsheets.all.each do |c| %>
+                <% @user.cheatsheets.where(visibility: true).each do |c| %>
                     <div class="profile-comments__item">
                         <div class="profile-comments__body">
                             <h5 class="profile-comments__sender">

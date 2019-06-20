@@ -5,6 +5,7 @@ SimpleCov.start 'rails' do
   add_filter '/spec/' # for rspec
   add_filter '/test/' # for minitest
 end
+require 'capybara/rspec'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

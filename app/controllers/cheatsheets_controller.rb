@@ -1,5 +1,6 @@
 class CheatsheetsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :destroy]
+  before_action :require_public, only: [:show]
 
   def new
     if logged_in?
@@ -10,11 +11,7 @@ class CheatsheetsController < ApplicationController
   end
 
   def index
-    if params[:tag]
-      @cheatsheet = Cheatsheet.tagged_with(params[:tag])
-    else
-      @cheatsheet = Cheatsheet.all
-    end
+    @cheatsheet = Cheatsheet.all.where(visibility: true)
   end
 
   def show
@@ -29,7 +26,7 @@ class CheatsheetsController < ApplicationController
     else
       render 'new'
       @feed_items = []
-      flash[:danger]
+      flash[:danger] = "Your cheatsheet is missing required values!"
     end
   end
 
@@ -43,6 +40,13 @@ class CheatsheetsController < ApplicationController
 
     def cheatsheet_params
       params.require(:cheatsheet).permit(:title, :content,
-                                   :user_id, :tag_list)
+                                   :user_id, :tag_list, :visibility)
+    end
+
+    def require_public
+      @cheatsheet = Cheatsheet.find(params[:id])
+      if @cheatsheet[:visibility] == false
+        redirect_to(root_url)  unless (logged_in? && (current_user.id == @cheatsheet.user_id))
+      end
     end
 end

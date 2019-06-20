@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :favorites
+      get :favorites, :private_cheatsheets
     end
   end
 
