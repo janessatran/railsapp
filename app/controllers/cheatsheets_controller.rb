@@ -11,11 +11,7 @@ class CheatsheetsController < ApplicationController
   end
 
   def index
-    if params[:tag]
-      @cheatsheet = Cheatsheet.tagged_with(params[:tag]).where(visibility: true)
-    else
-      @cheatsheet = Cheatsheet.all.where(visibility: true)
-    end
+    @cheatsheet = Cheatsheet.all.where(visibility: true)
   end
 
   def show
@@ -24,14 +20,13 @@ class CheatsheetsController < ApplicationController
 
   def create
     @cheatsheet = current_user.cheatsheets.build(cheatsheet_params)
-    puts cheatsheet_params
     if @cheatsheet.save
       flash[:success] = "Your cheatsheet has been created!"
       redirect_to @cheatsheet
     else
       render 'new'
       @feed_items = []
-      flash[:danger]
+      flash[:danger] = "Your cheatsheet is missing required!"
     end
   end
 
