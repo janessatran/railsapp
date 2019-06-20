@@ -1,5 +1,5 @@
 <h3>Search Result for tag 
-<%= @parameter %>:
+<%= @tag %>:
 </h3>  
 <% @results.each do |result| %>  
   <%= link_to result.title, Cheatsheet.find_by(id: result.id) %> <br>

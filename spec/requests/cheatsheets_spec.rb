@@ -16,7 +16,8 @@ RSpec.describe "Cheatsheets", type: :request do
       expect do
         post cheatsheets_path, params: { cheatsheet: { title: 'title', 
                                                       tag_list: 'test', 
-                                                      content: 'Lorem ipsum'}  }
+                                                      content: 'Lorem ipsum', 
+                                                      visibility: 'true'}  }
       end.to change { Cheatsheet.count }.from(initial_count).to(initial_count + 1)   
 
       expect(flash[:success]).to eq("Your cheatsheet has been created!")
@@ -24,18 +25,35 @@ RSpec.describe "Cheatsheets", type: :request do
 
     it 'redirects users to login for users who are not logged in' do
       delete logout_path #log out user
-
-      expect(is_logged_in?).to eq(false)
-      expect(response).to redirect_to(root_url)
-
-      follow_redirect!
       get new_cheatsheet_path
 
       expect(response).to redirect_to(login_url)
     end
   end
 
-  describe 'show cheatsheet' do
+  describe 'index' do
+
+    it 'shows all cheatsheets that have visibility as true' do
+      for i in 1..10 do
+        if i < 5
+          post cheatsheets_path, params: { cheatsheet: { title: 'This is visible', 
+            tag_list: 'test', 
+            content: 'Lorem ipsum', 
+            visibility: 'true'}  }
+        else
+          post cheatsheets_path, params: { cheatsheet: { title: 'This is not visible', 
+            tag_list: 'test', 
+            content: 'Lorem ipsum', 
+            visibility: 'false'}  }
+        end
+      end
+      get cheatsheets_path
+
+      expect(response.body).not_to include("This is not visible")
+    end
+  end
+
+  describe 'show' do
     context 'if the visibility of the cheatsheet is private' do 
 
       it 'should not be visible to users who are not the original author' do
