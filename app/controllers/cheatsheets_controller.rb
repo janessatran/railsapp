@@ -26,7 +26,7 @@ class CheatsheetsController < ApplicationController
     else
       render 'new'
       @feed_items = []
-      flash[:danger]
+      flash[:danger] = "Your cheatsheet is missing required values!"
     end
   end
 

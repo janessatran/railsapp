@@ -29,6 +29,15 @@ RSpec.describe "Cheatsheets", type: :request do
 
       expect(response).to redirect_to(login_url)
     end
+
+    it 'creates an error message if the required fields are not filled out' do
+      post cheatsheets_path, params: { cheatsheet: { title: '', 
+        tag_list: '', 
+        content: '', 
+        visibility: 'true'}  }
+
+      expect(flash[:danger]).to eq("Your cheatsheet is missing required values!")
+    end
   end
 
   describe 'index' do
