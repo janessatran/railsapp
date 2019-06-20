@@ -10,8 +10,8 @@ class StaticPagesController < ApplicationController
     if params[:search].blank?
       redirect_to(root_path, alert: 'Empty field!') && return
     else
-      @parameter = params[:search].downcase
-      @results = Cheatsheet.tagged_with("#{@parameter}").where(visibility: true)
+      @tag = params[:search].downcase
+      @results = Cheatsheet.tagged_with("#{@tag}").where(visibility: true)
     end
   end
 end

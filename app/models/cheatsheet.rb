@@ -1,7 +1,6 @@
 class Cheatsheet < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
-  attr_accessor :visibility
 
   acts_as_taggable
 
@@ -9,4 +8,5 @@ class Cheatsheet < ApplicationRecord
   validates :tag_list, presence: true
   validates :content, presence: true
   validates :user_id, presence: true
+  attribute :visibility, :boolean, default: 'false'
 end

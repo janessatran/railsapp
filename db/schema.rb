@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_233006) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "visibility", default: false
+    t.boolean "visibility"
     t.integer "favorites"
     t.index ["user_id", "created_at"], name: "index_cheatsheets_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_cheatsheets_on_user_id"
