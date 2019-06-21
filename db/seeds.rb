@@ -1,5 +1,5 @@
-User.create!(name:  "Janessa Admin",
-             email: "janessa@admin.com",
+User.create!(name:  "Test Admin",
+             email: "test@admin.com",
              password:              "password",
              password_confirmation: "password",
              admin: true,
@@ -11,7 +11,9 @@ users = User.order(:activated_at).take(20)
   title = Faker::Lorem.sentence(1)
   tag_list = "test, test2"
   content = Faker::Lorem.sentence(4)
-  users.each { |user| user.cheatsheets.create!(title: title, content: content, tag_list: tag_list) }
+  users.each { |user| user.cheatsheets.create!(title: title, content: content, tag_list: tag_list, visibility: true) }
+  users.each { |user| user.cheatsheets.create!(title: title + "private", content: content, tag_list: tag_list, visibility: false) }
+
 end
 
 99.times do |n|

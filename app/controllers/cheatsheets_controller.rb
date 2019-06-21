@@ -30,6 +30,7 @@ class CheatsheetsController < ApplicationController
     end
   end
 
+  # possible remove this since it's not called at all
   def favorites
     @title = "Favorites"
     @cheatsheet  = Cheatsheet.find(params[:id])
