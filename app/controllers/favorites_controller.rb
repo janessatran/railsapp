@@ -22,6 +22,9 @@ class FavoritesController < ApplicationController
   end
 
   private
+    # def favorite_params
+    #   params.require(:favorite).permit(:cheatsheet_id, :user_id)
+    # end
 
     def find_favorite
       @favorite = @cheatsheet.favorites.find(params[:id])
@@ -37,9 +40,5 @@ class FavoritesController < ApplicationController
       else
         Favorite.where(user_id: current_user.id, cheatsheet_id: params[:cheatsheet_id]).exists?
       end
-    end
-
-    def favorites_params
-      params.require(:favorite).permit(:cheatsheet_id, :user_id)
     end
 end
