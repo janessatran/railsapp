@@ -8,7 +8,7 @@ RSpec.describe "Cheatsheets", type: :request do
     log_in_as(@user, password: 'password123', remember_me: '1')
   end
 
-  describe "create cheatsheet" do
+  describe "create" do
     it "create should work if user is logged in" do
       expect(is_logged_in?).to eq(true)
       initial_count = Cheatsheet.count
@@ -25,6 +25,7 @@ RSpec.describe "Cheatsheets", type: :request do
 
     it 'redirects users to login for users who are not logged in' do
       delete logout_path #log out user
+      puts "getting new cheatsheet.."
       get new_cheatsheet_path
 
       expect(response).to redirect_to(login_url)

@@ -21,7 +21,6 @@ class FavoritesController < ApplicationController
     end
   end
 
-
   private
 
     def find_favorite
@@ -33,7 +32,11 @@ class FavoritesController < ApplicationController
     end
 
     def already_liked?
-      Favorite.where(user_id: current_user.id, cheatsheet_id: params[:cheatsheet_id]).exists?
+      if params[:id].nil? == false
+        Favorite.find(params[:id])
+      else
+        Favorite.where(user_id: current_user.id, cheatsheet_id: params[:cheatsheet_id]).exists?
+      end
     end
 
     def favorites_params
