@@ -20,25 +20,48 @@ RSpec.describe "UsersSignups", type: :request do
                                            email: "user@example.com",
                                            password:              "password",
                                            password_confirmation: "password" } }
+
       expect(ActionMailer::Base.deliveries.size).to eq(1)
       @user = assigns(:user)
+
       expect(@user.activated?).to eq(false)
+
       # Try to log in before activation.
       log_in_as(@user)
+
       expect(is_logged_in?).to eq(false)
+
       # Invalid activation token
       get edit_account_activation_path("invalid token", email: @user.email)
+
       expect(is_logged_in?).to eq(false)
+
       # Valid token, wrong email
       get edit_account_activation_path(@user.activation_token, email: 'wrong')
+
       expect(is_logged_in?).to eq(false)
+
       # Valid activation token
       get edit_account_activation_path(@user.activation_token, email: @user.email)
+
       expect(@user.reload.activated?).to eq(true)
+
       follow_redirect!
+
       expect(response).to render_template('users/show')
       expect(is_logged_in?).to eq(true)
       assert_template 'users/show'
+    end
+
+    it "render new user template if required params are not specified on create" do
+      get signup_path
+      initial_count = User.count
+      post users_path, params: { user: { name:  "Example User",
+                                           email: "email",
+                                           password:              "password",
+                                           password_confirmation: "password" } }
+
+      expect(response).to render_template('new')
     end
   end
 end

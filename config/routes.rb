@@ -16,16 +16,10 @@ Rails.application.routes.draw do
   patch '/users/:id/edit', to: 'users#edit'
 
   get 'tags/:tag', to: 'cheatsheets#index', as: :tag
-  
-  resources :users do
-    member do
-      get :following, :followers
-    end
-  end
 
   resources :users do
     member do
-      get :favorites, :private_cheatsheets, :public_cheatsheets
+      get :favorites, :private_cheatsheets, :public_cheatsheets, :following, :followers
     end
   end
 
