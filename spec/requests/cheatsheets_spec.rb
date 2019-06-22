@@ -8,6 +8,21 @@ RSpec.describe "Cheatsheets", type: :request do
     log_in_as(@user, password: 'password123', remember_me: '1')
   end
 
+  describe "new" do
+    it 'redirects users to login for users who are not logged in' do
+      delete logout_path #log out user
+      get new_cheatsheet_path
+
+      expect(response).to redirect_to(login_url)
+    end
+
+    it 'instantiates new Cheatsheet if logged in' do
+      get new_cheatsheet_path
+
+      expect(assigns(:cheatsheet)).to be_a(Cheatsheet)
+    end
+  end
+
   describe "create" do
     it "create should work if user is logged in" do
       expect(is_logged_in?).to eq(true)
@@ -21,14 +36,6 @@ RSpec.describe "Cheatsheets", type: :request do
       end.to change { Cheatsheet.count }.from(initial_count).to(initial_count + 1)   
 
       expect(flash[:success]).to eq("Your cheatsheet has been created!")
-    end
-
-    it 'redirects users to login for users who are not logged in' do
-      delete logout_path #log out user
-      puts "getting new cheatsheet.."
-      get new_cheatsheet_path
-
-      expect(response).to redirect_to(login_url)
     end
 
     it 'creates an error message if the required fields are not filled out' do
@@ -91,4 +98,5 @@ RSpec.describe "Cheatsheets", type: :request do
       end
     end
   end
+
 end

@@ -6,20 +6,22 @@ RSpec.describe "Favorites", type: :request do
     @cheatsheet = @user.cheatsheets.create(title: "Rspec Basics", topic: "rspec", 
                                  content: "Test!!", tag_list: "test", visibility: true)
     @other_user = create(:user)
-
     get login_path
 
     post login_path, params: { session: { email: @other_user.email,
                                           password: 'password123' } }
-
     post favorites_path, params: { cheatsheet_id: @cheatsheet.id, user_id: @user.id }
+
   end
-  
+
+  describe "POST /favorites" do
+    it "user must be logged in before favoriting cheatsheet" do
+      expect(@cheatsheet.favorites).to be_present
+    end
+  end
+
   describe "GET /favorites" do
-
     it "shows the favorites page of the logged in user" do
-      expect(is_logged_in?).to eq(true)
-
       get favorites_user_path(@other_user)
 
       expect(@other_user.favorites.empty?).not_to eq(true)
@@ -28,12 +30,10 @@ RSpec.describe "Favorites", type: :request do
       @other_user.favorites.each do |fav|
         assert_select "a[href=?]", cheatsheet_path(fav.cheatsheet_id)
       end
-
     end
   end
 
-  describe "remove favorite" do
-
+  describe "DELETE /favorite" do
     it "decreases the favorite count for each unfavorite" do
       initial_count = @cheatsheet.favorites.count
       fav = @other_user.favorites.find_by(cheatsheet_id: @cheatsheet.id)

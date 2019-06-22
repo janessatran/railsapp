@@ -13,7 +13,6 @@ users = User.order(:activated_at).take(20)
   content = Faker::Lorem.sentence(4)
   users.each { |user| user.cheatsheets.create!(title: title, content: content, tag_list: tag_list, visibility: true) }
   users.each { |user| user.cheatsheets.create!(title: title + "private", content: content, tag_list: tag_list, visibility: false) }
-
 end
 
 99.times do |n|
