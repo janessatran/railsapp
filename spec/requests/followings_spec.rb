@@ -7,9 +7,9 @@ RSpec.describe "Followings", type: :request do
     get login_path
     post login_path, params: { session: { email: @user.email, 
                                           password: 'password123' } }
+                                          
     @user.follow(@other_user)
     @other_user.follow(@user)
-
   end
 
   describe "GET /followings" do
