@@ -14,12 +14,12 @@ Still a work in progress, but you can view the application here: [https://tilnot
 * Enables users to edit their profiles
 * Enable users to "favorite" other user's cheatsheets
 * Practice test-driven-development and write tests for models/controllers
-
+* Add option to make cheatsheet private
 
 ### Future Tasks
 * Update the front-end of the application
 * Add link on user profile to enable easy access to their "favorite" cheatsheets
-* Add option to make cheatsheet private
+* Enable users to edit cheatsheet
 
 ### Bugs
 * None yet... but I'm on the lookout!
