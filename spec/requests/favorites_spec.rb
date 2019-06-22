@@ -36,13 +36,10 @@ RSpec.describe "Favorites", type: :request do
 
     it "decreases the favorite count for each unfavorite" do
       initial_count = @cheatsheet.favorites.count
-      puts initial_count
       fav = @other_user.favorites.find_by(cheatsheet_id: @cheatsheet.id)
-      puts fav.inspect
-      puts fav.id
 
       expect do
-        delete "/favorites/#{fav.id}"
+        delete favorite_path(fav), params: { cheatsheet_id: @cheatsheet.id, user_id: @other_user.id }
       end.to change  {  @cheatsheet.favorites.count }.from(initial_count).to(initial_count - 1)
     end
   end

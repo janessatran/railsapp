@@ -21,22 +21,22 @@ class FavoritesController < ApplicationController
     end
   end
 
-
   private
 
     def find_favorite
-      puts "I'm in here!"
       @favorite = @cheatsheet.favorites.find(params[:id])
     end
 
     def find_cheatsheet
-      puts "I'm in this one!"
       @cheatsheet = Cheatsheet.find(params[:cheatsheet_id])
     end
 
     def already_liked?
-      puts "I'm in already_liked?"
-      Favorite.where(user_id: current_user.id, cheatsheet_id: params[:cheatsheet_id]).exists?
+      if params[:id].nil? == false
+        Favorite.find(params[:id])
+      else
+        Favorite.where(user_id: current_user.id, cheatsheet_id: params[:cheatsheet_id]).exists?
+      end
     end
 
     def favorites_params
