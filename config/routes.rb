@@ -14,16 +14,17 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   patch '/users/:id/edit', to: 'users#edit'
+  patch '/cheatsheets/:id/edit', to: 'cheatsheets#edit'
 
   get 'tags/:tag', to: 'cheatsheets#index', as: :tag
 
   resources :users do
     member do
-      get :favorites, :private_cheatsheets, :public_cheatsheets, :following, :followers
+      get :favorites, :private_cheatsheets, :public_cheatsheets, :following, :followers, :my_cheatsheets
     end
   end
 
-  resources :cheatsheets,          only: [:new, :create, :destroy, :show, :index]
+  resources :cheatsheets        #  only: [:new, :create, :destroy, :show, :index, :edit]
   resources :tags, only: [:index, :show]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

@@ -1,22 +1,30 @@
 <%= csrf_meta_tags %>
 
-<h1><%= @cheatsheet.title %></h1>
-<b>Author: </b>
-<%= link_to User.find_by(id: @cheatsheet.user_id).name, User.find_by(id: @cheatsheet.user_id) %> <br>
-<b>Created Date: </b>
+  <h1><%= @cheatsheet.title %></h1>
+    <% if current_user.nil? == false && (current_user?(@user) && @cheatsheet.user_id == @user.id) %>
+      <%= link_to 'Edit', edit_cheatsheet_path(@cheatsheet) %> |
+      <%= link_to 'Delete', cheatsheet_path(@cheatsheet), method: :delete, data: { confirm: 'Are you sure?' } %> 
+    <% end %>
+  <br><br>
+  <b>Author: </b>
+  <%= link_to User.find_by(id: @cheatsheet.user_id).name, User.find_by(id: @cheatsheet.user_id) %> <br>
+  
+  <b>Created Date: </b>
+  <%= @cheatsheet.created_at.strftime('%Y-%m-%d') %>
+  <br><br>
 
-<%= @cheatsheet.created_at.strftime('%Y-%m-%d') %>
-<br><br>
-<strong id="favorites" class="stat">
-  <%= render 'shared/favorite_stats' %>
-</strong>
-<br><br>
-<%= (@cheatsheet.content).html_safe %> 
+  <strong id="favorites" class="stat">
+  <%= render 'shared/favorite_stats'  %> 
+  </strong>
 
-<br><br>
 
-<h4>Tags</h4>
-<%= render @cheatsheet.tags %>
-<%= render 'favorite_form' if logged_in? %>
+  <br><br>
+  <%= (@cheatsheet.content).html_safe %> 
+
+  <br><br>
+
+  <h4>Tags</h4>
+  <%= render @cheatsheet.tags %>
+  <%= render 'favorite_form' if logged_in? %>
 
 
