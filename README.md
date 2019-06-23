@@ -15,11 +15,11 @@ Still a work in progress, but you can view the application here: [https://tilnot
 * Enable users to "favorite" other user's cheatsheets
 * Practice test-driven-development and write tests for models/controllers
 * Add option to make cheatsheet private
+* Add option to edit and delete cheatsheet
 
 ### Future Tasks
 * Update the front-end of the application
 * Add link on user profile to enable easy access to their "favorite" cheatsheets
-* Enable users to edit cheatsheet
 
 ### Bugs
 * None yet... but I'm on the lookout!
