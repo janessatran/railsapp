@@ -1,11 +1,11 @@
-<li id="<%= cheatsheet.id %>">
+<li>
+  <%= link_to cheatsheet.title, Cheatsheet.find_by(id: cheatsheet.id) %> 
+  by  
   <span class="user"><%= link_to cheatsheet.user.name, cheatsheet.user %></span>
-  <span class="content"><%= cheatsheet.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(cheatsheet.created_at) %> ago.
-    <% if current_user?(cheatsheet.user) %>
-      <%= link_to "delete", cheatsheet, method: :delete,
-                                       data: { confirm: "You sure?" } %>
-    <% end %>
-  </span>
+
+  <% if current_user.nil? == false &&  cheatsheet.user_id == current_user.id %>
+    <br>
+    <%= link_to 'Edit', edit_cheatsheet_path(cheatsheet) %> |
+    <%= link_to 'Delete', cheatsheet_path(cheatsheet), method: :delete, data: { confirm: 'Are you sure?' } %> 
+  <% end %>
 </li>

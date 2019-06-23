@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
   protect_from_forgery
 
-  def index
-    @users = User.all
-  end
+  # def index
+  #   @users = User.all
+  # end
 
   def new
     @user = User.new
@@ -74,6 +74,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @favorites = @user.favorites.paginate(page: params[:page])
     render 'show_favorites'
+  end
+
+  def my_cheatsheets
+    @user = User.find(params[:id])
+    @my_cheatsheets = @user.cheatsheets
   end
 
   def public_cheatsheets
