@@ -4,7 +4,7 @@ Still a work in progress, but you can view the application here: [https://tilnot
 
 ## Development Notes
 
-### Accomplished by 06/15/2019
+### Accomplished by 06/23/2019
 * Create User authentication with cookie-based Sessions resource
 * Create tables for users, cheatsheets, relationships, favorites
 * Add admin privileges to delete users
