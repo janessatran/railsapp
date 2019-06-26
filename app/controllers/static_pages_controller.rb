@@ -11,7 +11,7 @@ class StaticPagesController < ApplicationController
       redirect_to(root_path, alert: 'Empty field!') && return
     else
       @tag = params[:search].downcase
-      @results = Cheatsheet.tagged_with("#{@tag}").where(visibility: true)
+      @cheatsheets = Cheatsheet.tagged_with("#{@tag}").where(visibility: true).paginate(page: params[:page])
     end
   end
 end
