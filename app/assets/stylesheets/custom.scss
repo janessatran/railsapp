@@ -1,5 +1,6 @@
 @import "bootstrap";
 body { padding-top: 50px; }
+.navbar-container { width: 100%; }
 .navbar-inverse { background-color: rgba(25,25,25,0)}
 .navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { background-color: rgba(25,25,25,0)}
 .navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus { background-color: #D90000}
@@ -21,8 +22,8 @@ body { padding-top: 50px; }
 .navbar-inverse .navbar-nav>.dropdown>a .caret { border-bottom-color: #999999}
 .navbar-inverse .navbar-nav>.dropdown>a:hover .caret { border-bottom-color: #FFFFFF}
 .icon-bar { color: #ffcece }
-.navbar-toggle { border: rgba(25,25,25,0); background-color: #9191917e }
-.navbar-collapse { border: rgba(25,25,25,0); background-color: #ffffff; }
+.navbar-toggle { border: rgba(25,25,25,0); background-color: #919191a2 }
+.navbar-collapse { border: rgba(25,25,25,0); background-color: #c9c9c938; }
 
 /* mixins, variables, etc. */
 
