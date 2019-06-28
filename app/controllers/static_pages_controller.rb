@@ -1,7 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
     if logged_in?
-      # @cheatsheets  = current_user.cheatsheets.build
       @feed_items = current_user.feed.where(visibility: true).paginate(page: params[:page])
     end
   end
