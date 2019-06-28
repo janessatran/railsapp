@@ -1,10 +1,10 @@
 # TIL Notes
 I built this project while going through Rails Tutorial to learn Ruby on Rails. It was inspired by my friends who taught me about creating a "Today I learned" (TIL) repo to write down all my notes of new things I've learned. Users can create an account to create a cheatsheet contribution to the learning community. They can also "favorite" other user's cheatsheets and follow users. 
-Still a work in progress, but you can view the application here: [https://tilnotes.herokuapp.com/](https://tilnotes.herokuapp.com/)
+You can view the application here: [https://tilnotes.herokuapp.com/](https://tilnotes.herokuapp.com/)
 
 ## Development Notes
 
-### Accomplished by 06/23/2019
+### Accomplished by 06/27/2019
 * Create User authentication with cookie-based Sessions resource
 * Create tables for users, cheatsheets, relationships, favorites
 * Add admin privileges to delete users
@@ -16,10 +16,11 @@ Still a work in progress, but you can view the application here: [https://tilnot
 * Practice test-driven-development and write tests for models/controllers
 * Add option to make cheatsheet private
 * Add option to edit and delete cheatsheet
-
-### Future Tasks
 * Update the front-end of the application
 * Add link on user profile to enable easy access to their "favorite" cheatsheets
+
+### Future Tasks
+* None for now :) 
 
 ### Bugs
 * None yet... but I'm on the lookout!
