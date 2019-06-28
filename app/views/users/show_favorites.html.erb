@@ -3,12 +3,13 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1><%= @user.name %></h1>
-      <span><%= link_to "view my profile", @user %></span><br><br>
+      <span><%= link_to "view my profile", @user %></span><br>
+      <br>
       <span><b>Cheatsheets:</b> <%= @user.cheatsheets.count %></span>
       <span><b>Favorites:</b> <%= @user.favorites.count %></span>
-
     </section>
-    <br><br>
+    <br>
+    <br>
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
@@ -19,7 +20,7 @@
       <ul class="users follow">
         <%= render '/users/favorite' %>
       </ul>
-          <%= will_paginate @favorites %>
+      <%= will_paginate @favorites %>
     <% end %>
   </div>
 </div>

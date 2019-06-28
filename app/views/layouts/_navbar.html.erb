@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
       </button>
       <div class ="navbar-brand navbar-left">
-      <%= link_to "til", root_path %>
+        <%= link_to "til", root_path %>
       </div>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
@@ -16,7 +16,7 @@
         <li>
           <a href="/new">Create a Cheatsheet</a>
         </li>
-         <% if logged_in? %>
+        <% if logged_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Cheatsheets <b class="caret"></b>
@@ -26,9 +26,9 @@
               <li><%= link_to "My Favorite Cheatsheets", favorites_user_path(current_user) %></li>
             </ul>
           </li>
-          <% end %>
+        <% end %>
         <% if logged_in? %>
-        <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "Users", users_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>
@@ -43,7 +43,7 @@
             </ul>
           </li>
         <% else %>
-        <li> <%= link_to "Log In", login_path %> </li>
+          <li> <%= link_to "Log In", login_path %> </li>
         <% end %>
       </ul>
     </nav>

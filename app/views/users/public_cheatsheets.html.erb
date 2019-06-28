@@ -1,26 +1,25 @@
 <!-- Latest posts -->
 <div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">Cheatsheet contributions</h4>
-</div>
-<div class="panel-body">
-<div class="profile__comments">
-    <% @public_cheatsheets.each do |c| %>
+  <div class="panel-heading">
+    <h4 class="panel-title">Cheatsheet contributions</h4>
+  </div>
+  <div class="panel-body">
+    <div class="profile__comments">
+      <% @public_cheatsheets.each do |c| %>
         <div class="profile-comments__item">
-            <div class="profile-comments__body">
-                <h5 class="profile-comments__sender">
-                    <%= link_to c.title, Cheatsheet.find_by(id: c.id) %> </li>
-                    <small><%= c.created_at.strftime("%m/%d/%Y") %></small>
-                </h5>
-            </div>
-            <div class="profile-comments__content">
-                Tags: <%= c.tag_list %>
-            </div>
+          <div class="profile-comments__body">
+            <h5 class="profile-comments__sender">
+              <%= link_to c.title, Cheatsheet.find_by(id: c.id) %> </li>
+            <small><%= c.created_at.strftime("%m/%d/%Y") %></small>
+          </h5>
         </div>
-        <% end %>
-    </div>
+        <div class="profile-comments__content">
+          Tags: <%= c.tag_list %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 </div>
-
 </div>
 <div class="col-xs-12 col-sm-3">

@@ -1,30 +1,28 @@
 <!-- Latest posts -->
 <div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title">All My Cheatsheet Contributions</h4>
-</div>
-<div class="panel-body">
-<div class="profile__comments">
-    <% @my_cheatsheets.each do |c| %>
+  <div class="panel-heading">
+    <h4 class="panel-title">All My Cheatsheet Contributions</h4>
+  </div>
+  <div class="panel-body">
+    <div class="profile__comments">
+      <% @my_cheatsheets.each do |c| %>
         <div class="profile-comments__item">
-            <div class="profile-comments__body">
-                <h5 class="profile-comments__sender">
-                    <%= link_to c.title, Cheatsheet.find_by(id: c.id) %> </li>
-                    <small><%= c.created_at.strftime("%m/%d/%Y") %></small>
-        
-                </h5>
-            </div>
-            <div class="profile-comments__content">
-                Tags: <%= c.tag_list %>
-            </div>
-            <br>
-                <%= link_to 'Edit', edit_cheatsheet_path(c) %> |
-                <%= link_to 'Delete', cheatsheet_path(c), method: :delete, data: { confirm: 'Are you sure?' } %> 
+          <div class="profile-comments__body">
+            <h5 class="profile-comments__sender">
+              <%= link_to c.title, Cheatsheet.find_by(id: c.id) %> </li>
+            <small><%= c.created_at.strftime("%m/%d/%Y") %></small>
+          </h5>
         </div>
-        <% end %>
-    </div>
+        <div class="profile-comments__content">
+          Tags: <%= c.tag_list %>
+        </div>
+        <br>
+        <%= link_to 'Edit', edit_cheatsheet_path(c) %> |
+        <%= link_to 'Delete', cheatsheet_path(c), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+  </div>
 </div>
 </div>
-
 </div>
 <div class="col-xs-12 col-sm-3">

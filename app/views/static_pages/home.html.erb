@@ -1,35 +1,34 @@
-
-<div class="container-fluid text-center">    
+<div class="container-fluid text-center">
   <center>
     <h1>Today I learned</h1>
     <p>
       Inspired by <a href="https://github.com/botanical" class="ref">@botanical</a> and <a href="https://github.com/slabounty" class="ref">@slabounty</a>, who first introduced me to using a /til repo to take note of things I learned.
     </p>
   </center>
-  <%= form_tag(search_page_path, :method => "get", class: 'search-container') do %>  
-    <div id="search-bar">  
-      <%= search_field_tag :search, params[:search], placeholder: "Search topics", class: "search-bar" %>  
-      <div class="input-group-btn">  
+  <%= form_tag(search_page_path, :method => "get", class: 'search-container') do %>
+    <div id="search-bar">
+      <%= search_field_tag :search, params[:search], placeholder: "Search topics", class: "search-bar" %>
+      <div class="input-group-btn">
         <%= button_tag "", :class => 'search-icon',:name => nil %>
-      </div>  
-    </div>  
+      </div>
+    </div>
   <% end %>
-  <br><br><br>
- 
+  <br>
+  <br>
+  <br>
   <!-- analytics -->
   <div class="row">
     <!-- Total Users Card -->
-      <div class="card card-1">
+    <div class="card card-1">
       <h4><span class="card-label"> Registered Users </span></h4>
       <h5><span class="card-number"> <%= User.all.count %> </span></h5>
-      </div>
+    </div>
     <!-- Total Cheatsheets Card -->
-      <div class="card card-1">
+    <div class="card card-1">
       <h4><span class="card-label"> Cheatsheets Created </span></h4>
       <h5><span class="card-number"> <%= Cheatsheet.all.count %> </span></h5>
-      </div>
+    </div>
   </div>
-
   <hr>
   <h3>Explore Popular Topics</h3>
   <% button_colors = ["red", "cyan", "blue", "purple", "yellow", "green"].cycle.each %>
@@ -37,22 +36,21 @@
     <% class_string = "btn " + button_colors.next + " mini" %>
     <%= link_to tag, "/search?search=#{tag}", class: class_string %>
   <% end %>
-
-  <br><br><br>
+  <br>
+  <br>
+  <br>
   <hr>
   <h3>Community Activity</h3>
   <br>
   <center>
-  <% if logged_in? %>
-    <section class="stats">
-      <%= render 'shared/feed' %>
-    </section>
-  <% end %>
+    <% if logged_in? %>
+      <section class="stats">
+        <%= render 'shared/feed' %>
+      </section>
+    <% end %>
   </center>
 </div>
 </div>
-
-
 <footer class="container-fluid text-center">
   <p>Created with 💖 by Janessa Tran</p>
 </footer>
