@@ -1,126 +1,118 @@
-
 <div class="container">
-<br><br>
-<div class="row">
-      <div class="col-xs-12 col-sm-9">
-        <!-- User profile -->
-        <div class="panel panel-default">
-          <div class="panel-heading">
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-xs-12 col-sm-9">
+      <!-- User profile -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
           <h4 class="panel-title">User profile</h4>
-          </div>
-          <div class="panel-body">
-            <div class="profile__header">
-              <h4><%= @user.name %></h4>
-              <p class="text-muted">
-                <%= @user.bio %>
-              </p>
-            </div>
+        </div>
+        <div class="panel-body">
+          <div class="profile__header">
+            <h4><%= @user.name %></h4>
+            <p class="text-muted">
+              <%= @user.bio %>
+            </p>
           </div>
         </div>
-
-        <!-- User info -->
-        <div class="panel panel-default">
-          <div class="panel-heading">
+      </div>
+      <!-- User info -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
           <h4 class="panel-title">User info</h4>
-          </div>
-          <div class="panel-body">
-            <table class="table profile__table">
-              <tbody>
-                <tr>
-                  <th><strong>Title</strong></th>
-                  <td><%= @user.title %></td>
-                </tr>
-                <tr>
-                  <th><strong>Learning goals</strong></th>
-                  <td><%= @user.learning_goals %></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
-
-        <!-- Community -->
-        <div class="panel panel-default">
-          <div class="panel-heading">
+        <div class="panel-body">
+          <table class="table profile__table">
+            <tbody>
+              <tr>
+                <th><strong>Title</strong></th>
+                <td><%= @user.title %></td>
+              </tr>
+              <tr>
+                <th><strong>Learning goals</strong></th>
+                <td><%= @user.learning_goals %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Community -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
           <h4 class="panel-title">Community</h4>
-          </div>
-          <div class="panel-body">
-            <table class="table profile__table">
-              <tbody>
-                <tr>
-                  <th><strong>Cheatsheets</strong></th>
-                  <td><%= @user.cheatsheets.count %></td>
-                </tr>
-                <tr>
-                  <th><strong>Member since</strong></th>
-                  <td><%= @user.created_at.strftime("%m/%d/%Y") %></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
-
-        <!-- Latest posts -->
-        <div class="panel panel-default">
-          <div class="panel-heading">
+        <div class="panel-body">
+          <table class="table profile__table">
+            <tbody>
+              <tr>
+                <th><strong>Cheatsheets</strong></th>
+                <td><%= @user.cheatsheets.count %></td>
+              </tr>
+              <tr>
+                <th><strong>Member since</strong></th>
+                <td><%= @user.created_at.strftime("%m/%d/%Y") %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Latest posts -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
           <h4 class="panel-title">Cheatsheet contributions</h4>
-          </div>
-          <div class="panel-body">
-            <div class="profile__comments">
-                <% @user.cheatsheets.where(visibility: true).each do |c| %>
-                    <div class="profile-comments__item">
-                        <div class="profile-comments__body">
-                            <h5 class="profile-comments__sender">
-                                <%= link_to c.title, Cheatsheet.find_by(id: c.id) %> </li>
-                                <small><%= c.created_at.strftime("%m/%d/%Y") %></small>
-                            </h5>
-                        </div>
-                        <div class="profile-comments__content">
-                            Tags: <%= c.tag_list %>
-                        </div>
-                    </div>
-                 <% end %>
+        </div>
+        <div class="panel-body">
+          <div class="profile__comments">
+            <% @user.cheatsheets.where(visibility: true).each do |c| %>
+              <div class="profile-comments__item">
+                <div class="profile-comments__body">
+                  <h5 class="profile-comments__sender">
+                    <%= link_to c.title, Cheatsheet.find_by(id: c.id) %> </li>
+                  <small><%= c.created_at.strftime("%m/%d/%Y") %></small>
+                </h5>
+              </div>
+              <div class="profile-comments__content">
+                Tags: <%= c.tag_list %>
               </div>
             </div>
+          <% end %>
         </div>
-
-      </div>
-      <div class="col-xs-12 col-sm-3">
-        
-        <!-- Contact user -->
-        <p>
-        <% if logged_in? %>
-          <%= render 'follow_form' %>
-        <% end %>
-        <section class="stats">
-              <%= render 'shared/stats' %>
-        </section>
-        </p>
-
-        <hr class="profile__contact-hr">
-        
-        <!-- Contact info -->
-        <div class="profile__contact-info">
-          <div class="profile__contact-info-item">
-            <div class="profile__contact-info-icon">
-              <i class="fa fa-github"></i>
-            </div>
-            <div class="profile__contact-info-body">
-              <h5 class="profile__contact-info-heading">Github</h5>
-              <%= @user.github %>
-            </div>
-          </div>
-            <div class="profile__contact-info-item">
-            <div class="profile__contact-info-icon">
-              <i class="fa fa-twitter"></i>
-            </div>
-            <div class="profile__contact-info-body">
-              <h5 class="profile__contact-info-heading">Twitter</h5>
-              <%= @user.twitter %>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
+  </div>
+  <div class="col-xs-12 col-sm-3">
+    <!-- Contact user -->
+    <p>
+      <% if logged_in? %>
+        <%= render 'follow_form' %>
+      <% end %>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+    </p>
+    <hr class="profile__contact-hr">
+    <!-- Contact info -->
+    <div class="profile__contact-info">
+      <div class="profile__contact-info-item">
+        <div class="profile__contact-info-icon">
+          <i class="fa fa-github"></i>
+        </div>
+        <div class="profile__contact-info-body">
+          <h5 class="profile__contact-info-heading">Github</h5>
+          <%= @user.github %>
+        </div>
+      </div>
+      <div class="profile__contact-info-item">
+        <div class="profile__contact-info-icon">
+          <i class="fa fa-twitter"></i>
+        </div>
+        <div class="profile__contact-info-body">
+          <h5 class="profile__contact-info-heading">Twitter</h5>
+          <%= @user.twitter %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

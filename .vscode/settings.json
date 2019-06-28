@@ -1,0 +1,6 @@
+{
+    "workbench.settings.openDefaultKeybindings": true
+    "files.associations": {
+        "*.erb": "erb"
+      }
+}

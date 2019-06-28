@@ -1,6 +1,6 @@
 
 <%= form_for(@cheatsheet.favorites.build, remote: true) do |f| %>
-  <div><%= hidden_field_tag :user_id, current_user.id %></div>
-    <div><%= hidden_field_tag :cheatsheet_id, @cheatsheet.id %></div>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <%= hidden_field_tag :cheatsheet_id, @cheatsheet.id %>
   <%= f.submit "Favorite", class: "btn btn-primary" %>
 <% end %>

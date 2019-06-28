@@ -1,13 +1,9 @@
-
 <% provide(:title, 'All Cheatsheets') %>
 <h1>All Cheatsheets</h1>
-
 <%= will_paginate %>
-
 <ul class="users">
   <% @cheatsheets.each do |c| %>
     <%= render @cheatsheets %>
   <% end %>
 </ul>
-
 <%= will_paginate %>

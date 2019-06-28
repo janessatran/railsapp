@@ -289,7 +289,7 @@ DEPENDENCIES
   coffee-script-source (= 1.8.0)
   emd
   factory_bot_rails
-  faker (= 1.7.3)
+  faker
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
