@@ -109,6 +109,7 @@ GEM
       railties (>= 4.2.0)
     faker (1.7.3)
       i18n (~> 0.5)
+    ffi (1.11.1)
     ffi (1.11.1-x64-mingw32)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
@@ -143,10 +144,14 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
+    msgpack (1.2.10)
     msgpack (1.2.10-x64-mingw32)
     nio4r (2.3.1)
-    nokogiri (1.10.3-x64-mingw32)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
+    nokogiri (1.10.8-x64-mingw32)
+      mini_portile2 (~> 2.4.0)
+    pg (1.1.4)
     pg (1.1.4-x64-mingw32)
     public_suffix (3.1.0)
     puma (3.12.1)
@@ -258,7 +263,6 @@ GEM
       tzinfo (>= 1.0.0)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
-    wdm (0.1.1)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -272,6 +276,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
@@ -313,7 +318,6 @@ DEPENDENCIES
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
-  wdm (>= 0.1.0)
   web-console (>= 3.3.0)
   will_paginate (= 3.1.7)
 
